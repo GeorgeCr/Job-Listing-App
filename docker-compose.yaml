@@ -1,14 +1,42 @@
 version: "3.8"
 services:
-    frontend:
-        build:
-            context: ./frontend
-        ports:
-            - "3000:3000"
-        depends_on:
-          - backend
-    backend:
-        build:
-            context: ./backend
-        ports:
-          - "8080:8080"
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+  database:
+    image: postgres:16.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=test123$$
+      - POSTGRES_DB=JobListing
+    ports:
+      - "5433:5433"
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./backend/prisma/create_insert.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+        - "8888:80"
+    environment:
+        PGADMIN_DEFAULT_EMAIL: georgecraciun1998@gmail.com
+        PGADMIN_DEFAULT_PASSWORD: test123$$
+    volumes:
+        - pgadmin:/var/lib/pgadmin
+volumes:
+  database:
+    driver: local
+  pgadmin:

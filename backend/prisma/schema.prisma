@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Prisma schema
+
+model Users { // done
+  id           Int      @id @default(autoincrement())
+  role         String
+  username     String
+  passwordHash String
+  firstName    String
+  lastName     String
+  hobbies      String
+  lastEducation String
+  UserSkills   UserSkills[]
+  Feedback     Feedback[]
+  UserJobs     UserJobs[]
+}
+
+model UserSkills {
+  user_id  Int
+  skill_id Int
+  user     Users   @relation(fields: [user_id], references: [id])
+  skill    Skills  @relation(fields: [skill_id], references: [id])
+  seniority String
+  @@id([user_id, skill_id])
+}
+
+model Skills { // done
+  id        Int      @id @default(autoincrement())
+  name      String
+  JobSkills JobSkills[]
+  UserSkills UserSkills[]
+}
+
+model Feedback {
+  id     Int      @id @default(autoincrement())
+  type   String
+  content String
+  userId Int
+  jobId  Int
+  user   Users   @relation(fields: [userId], references: [id])
+  job    Jobs    @relation(fields: [jobId], references: [id])
+}
+
+model UserJobs { // done
+  user_id Int
+  job_id  Int
+  user    Users @relation(fields: [user_id], references: [id])
+  job     Jobs  @relation(fields: [job_id], references: [id])
+
+  @@id([user_id, job_id])
+}
+
+model Jobs { // done
+  id              Int            @id @default(autoincrement())
+  description     String
+  applicantsCount Int
+  companyId       Int
+  Feedback        Feedback[]
+  UserJobs        UserJobs[]
+  JobBenefits     JobBenefits[]
+  JobSkills       JobSkills[]
+  company         Companies     @relation(fields: [companyId], references: [id])
+}
+
+model JobBenefits { // done
+  job_id    Int
+  benefit_id Int
+  job       Jobs     @relation(fields: [job_id], references: [id])
+  benefit   Benefits @relation(fields: [benefit_id], references: [id])
+
+  @@id([job_id, benefit_id])
+}
+
+model JobSkills {
+  job_id  Int
+  skill_id Int
+  job     Jobs   @relation(fields: [job_id], references: [id])
+  skill   Skills @relation(fields: [skill_id], references: [id])
+
+  @@id([job_id, skill_id])
+}
+
+model Benefits { // done
+  id          Int      @id @default(autoincrement())
+  description String
+  JobBenefits JobBenefits[]
+}
+
+model Companies { // done
+  id       Int      @id @default(autoincrement())
+  name     String
+  location String
+  Jobs     Jobs[]
+}

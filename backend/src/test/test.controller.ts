@@ -7,6 +7,15 @@ export class TestController {
 
   @Get()
   async getSecret() {
-    return this.testService.getSecret();
+    return {
+      secrets: [
+        {
+          content: 'secret1',
+        },
+        {
+          content: 'secret2',
+        },
+      ],
+    };
   }
 }
