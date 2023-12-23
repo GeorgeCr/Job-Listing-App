@@ -12,60 +12,61 @@ datasource db {
 
 // Prisma schema
 
-model Users { // done
-  id           Int      @id @default(autoincrement())
-  role         String
-  username     String
-  passwordHash String
-  firstName    String
-  lastName     String
-  hobbies      String
+model Users {
+  id            String       @id @default(uuid())
+  role          String
+  username      String
+  passwordHash  String
+  firstName     String
+  lastName      String
+  hobbies       String
   lastEducation String
-  UserSkills   UserSkills[]
-  Feedback     Feedback[]
-  UserJobs     UserJobs[]
+  UserSkills    UserSkills[]
+  Feedback      Feedback[]
+  UserJobs      UserJobs[]
 }
 
 model UserSkills {
-  user_id  Int
-  skill_id Int
-  user     Users   @relation(fields: [user_id], references: [id])
-  skill    Skills  @relation(fields: [skill_id], references: [id])
+  user_id   String
+  skill_id  String
+  user      Users  @relation(fields: [user_id], references: [id])
+  skill     Skills @relation(fields: [skill_id], references: [id])
   seniority String
+
   @@id([user_id, skill_id])
 }
 
-model Skills { // done
-  id        Int      @id @default(autoincrement())
-  name      String
-  JobSkills JobSkills[]
+model Skills {
+  id         String       @id @default(uuid())
+  name       String
+  JobSkills  JobSkills[]
   UserSkills UserSkills[]
 }
 
 model Feedback {
-  id     Int      @id @default(autoincrement())
-  type   String
+  id      String @id @default(uuid())
+  type    String
   content String
-  userId Int
-  jobId  Int
-  user   Users   @relation(fields: [userId], references: [id])
-  job    Jobs    @relation(fields: [jobId], references: [id])
+  userId  String
+  jobId   String
+  user    Users  @relation(fields: [userId], references: [id])
+  job     Jobs   @relation(fields: [jobId], references: [id])
 }
 
-model UserJobs { // done
-  user_id Int
-  job_id  Int
-  user    Users @relation(fields: [user_id], references: [id])
-  job     Jobs  @relation(fields: [job_id], references: [id])
+model UserJobs {
+  user_id String
+  job_id  String
+  user    Users  @relation(fields: [user_id], references: [id])
+  job     Jobs   @relation(fields: [job_id], references: [id])
 
   @@id([user_id, job_id])
 }
 
-model Jobs { // done
-  id              Int            @id @default(autoincrement())
+model Jobs {
+  id              String        @id @default(uuid())
   description     String
   applicantsCount Int
-  companyId       Int
+  companyId       String
   Feedback        Feedback[]
   UserJobs        UserJobs[]
   JobBenefits     JobBenefits[]
@@ -73,32 +74,32 @@ model Jobs { // done
   company         Companies     @relation(fields: [companyId], references: [id])
 }
 
-model JobBenefits { // done
-  job_id    Int
-  benefit_id Int
-  job       Jobs     @relation(fields: [job_id], references: [id])
-  benefit   Benefits @relation(fields: [benefit_id], references: [id])
+model JobBenefits {
+  job_id     String
+  benefit_id String
+  job        Jobs     @relation(fields: [job_id], references: [id])
+  benefit    Benefits @relation(fields: [benefit_id], references: [id])
 
   @@id([job_id, benefit_id])
 }
 
 model JobSkills {
-  job_id  Int
-  skill_id Int
-  job     Jobs   @relation(fields: [job_id], references: [id])
-  skill   Skills @relation(fields: [skill_id], references: [id])
+  job_id   String
+  skill_id String
+  job      Jobs   @relation(fields: [job_id], references: [id])
+  skill    Skills @relation(fields: [skill_id], references: [id])
 
   @@id([job_id, skill_id])
 }
 
-model Benefits { // done
-  id          Int      @id @default(autoincrement())
+model Benefits {
+  id          String        @id @default(uuid())
   description String
   JobBenefits JobBenefits[]
 }
 
-model Companies { // done
-  id       Int      @id @default(autoincrement())
+model Companies {
+  id       String @id @default(uuid())
   name     String
   location String
   Jobs     Jobs[]

@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   frontend:
+    container_name: fe
     build:
       context: ./frontend
     ports:
@@ -8,6 +9,7 @@ services:
     depends_on:
       - backend
   backend:
+    container_name: be
     build:
       context: ./backend
     ports:
@@ -15,6 +17,7 @@ services:
     depends_on:
       - database
   database:
+    container_name: db
     image: postgres:16.1-alpine
     restart: always
     environment:
@@ -22,11 +25,12 @@ services:
       - POSTGRES_PASSWORD=test123$$
       - POSTGRES_DB=JobListing
     ports:
-      - "5433:5433"
+      - "5432:5432"
     volumes:
       - database:/var/lib/postgresql/data
-      - ./backend/prisma/create_insert.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./backend/prisma/create_insert.sql:/docker-entrypoint-initdb.d/create_insert.sql
   pgadmin:
+    container_name: pgadmin
     image: dpage/pgadmin4
     restart: always
     ports:

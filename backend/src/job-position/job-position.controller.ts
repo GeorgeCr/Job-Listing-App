@@ -1,12 +1,44 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Delete,
+  Patch,
+} from '@nestjs/common';
 import { JobPositionService } from './job-position.service';
 
 @Controller('job')
 export class JobPositionController {
   constructor(private jobPositionService: JobPositionService) {}
 
-  @Get('/')
+  @Get()
   async getAllJobs() {
     return this.jobPositionService.getAllJobs();
+  }
+
+  @Get(':id')
+  async getJobById(@Param('id') id: string) {
+    return this.jobPositionService.getJobById(id);
+  }
+
+  @Post()
+  async createJob(@Body() createJobDto: any): Promise<void> {
+    console.log('matching', createJobDto);
+    this.jobPositionService.createJob(createJobDto);
+  }
+
+  @Patch(':id')
+  async updateJob(
+    @Param('id') id: string,
+    @Body() updateJobDto: any,
+  ): Promise<void> {
+    this.jobPositionService.updateJob(id, updateJobDto);
+  }
+
+  @Delete(':id')
+  async deleteJobById(@Param('id') id: string) {
+    return this.jobPositionService.deleteJobById(id);
   }
 }
