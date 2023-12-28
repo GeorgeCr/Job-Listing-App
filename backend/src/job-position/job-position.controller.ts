@@ -41,4 +41,19 @@ export class JobPositionController {
   async deleteJobById(@Param('id') id: string) {
     return this.jobPositionService.deleteJobById(id);
   }
+
+  @Get(':id/skills')
+  async getJobSkills(@Param('id') id: string) {
+    return this.jobPositionService.getJobSkills(id);
+  }
+
+  @Get(':id/applicants')
+  async getJobApplicants(@Param('id') id: string) {
+    return this.jobPositionService.getJobApplicants(id);
+  }
+
+  @Get(':id/benefits')
+  async getJobBenefits(@Param('id') id: string) {
+    return this.jobPositionService.getJobBenefits(id);
+  }
 }

@@ -1,39 +1,40 @@
 import { Injectable } from '@nestjs/common';
+import { JobPositionRepository } from './job-position.repository';
 
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
 @Injectable()
 export class JobPositionService {
+  constructor(private jobPositionRepository: JobPositionRepository) {
+    console.log(this.constructor.prototype, 'this');
+  }
   async getAllJobs() {
-    return prisma.jobs.findMany();
+    return this.jobPositionRepository.getAll();
   }
 
   async getJobById(id: string) {
-    return prisma.jobs.findFirst({
-      where: {
-        id,
-      },
-    });
+    return this.jobPositionRepository.get(id);
   }
 
   async createJob(createJobDto: any) {
-    console.log('create job dto', createJobDto);
-    const job = await prisma.jobs.create({ data: createJobDto });
-    console.log('job wtf', job);
+    this.jobPositionRepository.create(createJobDto);
   }
 
   async updateJob(id: string, updateJobDto: any) {
-    console.log(
-      await prisma.jobs.update({
-        where: { id },
-        data: updateJobDto,
-      }),
-    );
+    this.jobPositionRepository.update(id, updateJobDto);
   }
 
   async deleteJobById(id: string) {
-    console.log('idd', id);
-    console.log(await prisma.jobs.delete({ where: { id } }));
+    this.jobPositionRepository.delete(id);
+  }
+
+  async getJobSkills(id: string) {
+    return this.jobPositionRepository.getSkills(id, { useRawQuery: true });
+  }
+
+  async getJobApplicants(id: string) {
+    return this.jobPositionRepository.getApplicants(id, { useRawQuery: true });
+  }
+
+  async getJobBenefits(id: string) {
+    return this.jobPositionRepository.getBenefits(id, { useRawQuery: true });
   }
 }

@@ -21,9 +21,9 @@ model Users {
   lastName      String
   hobbies       String
   lastEducation String
-  UserSkills    UserSkills[]
-  Feedback      Feedback[]
-  UserJobs      UserJobs[]
+  skills        UserSkills[]
+  feedbacks     Feedback[]
+  jobs          UserJobs[]
 }
 
 model UserSkills {
@@ -39,8 +39,8 @@ model UserSkills {
 model Skills {
   id         String       @id @default(uuid())
   name       String
-  JobSkills  JobSkills[]
-  UserSkills UserSkills[]
+  jobSkills  JobSkills[]
+  userSkills UserSkills[]
 }
 
 model Feedback {
@@ -67,10 +67,10 @@ model Jobs {
   description     String
   applicantsCount Int
   companyId       String
-  Feedback        Feedback[]
-  UserJobs        UserJobs[]
-  JobBenefits     JobBenefits[]
-  JobSkills       JobSkills[]
+  feedbacks       Feedback[]
+  users           UserJobs[]
+  benefits        JobBenefits[]
+  skills          JobSkills[]
   company         Companies     @relation(fields: [companyId], references: [id])
 }
 
@@ -95,12 +95,12 @@ model JobSkills {
 model Benefits {
   id          String        @id @default(uuid())
   description String
-  JobBenefits JobBenefits[]
+  jobBenefits JobBenefits[]
 }
 
 model Companies {
   id       String @id @default(uuid())
   name     String
   location String
-  Jobs     Jobs[]
+  jobs     Jobs[]
 }
