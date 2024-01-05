@@ -16,34 +16,32 @@ model Users {
   id            String       @id @default(uuid())
   role          String
   username      String
-  passwordHash  String
   firstName     String
   lastName      String
   hobbies       String
   lastEducation String
   skills        UserSkills[]
-  feedbacks     Feedback[]
-  jobs          UserJobs[]
+  feedbacks     Feedbacks[]
+  jobs          Jobs[]
 }
 
 model UserSkills {
-  user_id   String
-  skill_id  String
-  user      Users  @relation(fields: [user_id], references: [id])
-  skill     Skills @relation(fields: [skill_id], references: [id])
+  id        String @id @default(uuid())
+  name      String
+  user      Users  @relation(fields: [userId], references: [id])
   seniority String
-
-  @@id([user_id, skill_id])
+  userId    String
 }
 
-model Skills {
-  id         String       @id @default(uuid())
-  name       String
-  jobSkills  JobSkills[]
-  userSkills UserSkills[]
+model JobSkills {
+  id        String @id @default(uuid())
+  name      String
+  seniority String
+  Jobs      Jobs   @relation(fields: [jobsId], references: [id])
+  jobsId    String
 }
 
-model Feedback {
+model Feedbacks {
   id      String @id @default(uuid())
   type    String
   content String
@@ -53,55 +51,29 @@ model Feedback {
   job     Jobs   @relation(fields: [jobId], references: [id])
 }
 
-model UserJobs {
-  user_id String
-  job_id  String
-  user    Users  @relation(fields: [user_id], references: [id])
-  job     Jobs   @relation(fields: [job_id], references: [id])
-
-  @@id([user_id, job_id])
-}
-
 model Jobs {
-  id              String        @id @default(uuid())
+  id              String      @id @default(uuid())
+  title           String
   description     String
   applicantsCount Int
-  companyId       String
-  feedbacks       Feedback[]
-  users           UserJobs[]
-  benefits        JobBenefits[]
+  feedbacks       Feedbacks[]
+  users           Users[]
+  benefits        Benefits[]
   skills          JobSkills[]
-  company         Companies     @relation(fields: [companyId], references: [id])
-}
-
-model JobBenefits {
-  job_id     String
-  benefit_id String
-  job        Jobs     @relation(fields: [job_id], references: [id])
-  benefit    Benefits @relation(fields: [benefit_id], references: [id])
-
-  @@id([job_id, benefit_id])
-}
-
-model JobSkills {
-  job_id    String
-  skill_id  String
-  job       Jobs   @relation(fields: [job_id], references: [id])
-  skill     Skills @relation(fields: [skill_id], references: [id])
-  seniority String
-
-  @@id([job_id, skill_id])
+  company         Companies?
 }
 
 model Benefits {
-  id          String        @id @default(uuid())
+  id          String @id @default(uuid())
   description String
-  jobBenefits JobBenefits[]
+  jobs        Jobs   @relation(fields: [jobId], references: [id])
+  jobId       String
 }
 
 model Companies {
   id       String @id @default(uuid())
   name     String
   location String
-  jobs     Jobs[]
+  jobId    String @unique
+  jobs     Jobs   @relation(fields: [jobId], references: [id])
 }

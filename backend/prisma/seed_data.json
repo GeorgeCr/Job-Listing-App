@@ -1,0 +1,387 @@
+{
+  "users": [
+    {
+      "role": "Recruiter",
+      "username": "igass0",
+      "firstName": "Irina",
+      "lastName": "Gass",
+      "hobbies": "cooking",
+      "lastEducation": "High School"
+    },
+    {
+      "role": "Applicant",
+      "username": "wstory1",
+      "firstName": "Winfield",
+      "lastName": "Story",
+      "hobbies": "painting",
+      "lastEducation": "High School"
+    },
+    {
+      "role": "Recruiter",
+      "username": "cboughtwood2",
+      "firstName": "Ches",
+      "lastName": "Boughtwood",
+      "hobbies": "reading",
+      "lastEducation": "Master's Degree"
+    },
+    {
+      "role": "Recruiter",
+      "username": "ydugall3",
+      "firstName": "Ynez",
+      "lastName": "Dugall",
+      "hobbies": "cooking",
+      "lastEducation": "PhD"
+    },
+    {
+      "role": "Recruiter",
+      "username": "kthompsett4",
+      "firstName": "Kele",
+      "lastName": "Thompsett",
+      "hobbies": "painting",
+      "lastEducation": "High School"
+    },
+    {
+      "role": "Recruiter",
+      "username": "lfarn5",
+      "firstName": "Lezley",
+      "lastName": "Farn",
+      "hobbies": "gardening",
+      "lastEducation": "Master's Degree"
+    },
+    {
+      "role": "Applicant",
+      "username": "rgibling6",
+      "firstName": "Rriocard",
+      "lastName": "Gibling",
+      "hobbies": "cooking",
+      "lastEducation": "High School"
+    },
+    {
+      "role": "Applicant",
+      "username": "aepsly7",
+      "firstName": "Ashlin",
+      "lastName": "Epsly",
+      "hobbies": "painting",
+      "lastEducation": "High School"
+    },
+    {
+      "role": "Recruiter",
+      "username": "hfoister8",
+      "firstName": "Hagan",
+      "lastName": "Foister",
+      "hobbies": "photography",
+      "lastEducation": "Master's Degree"
+    },
+    {
+      "role": "Recruiter",
+      "username": "galmon9",
+      "firstName": "Gilberte",
+      "lastName": "Almon",
+      "hobbies": "photography",
+      "lastEducation": "PhD"
+    }
+  ],
+  "jobs": [
+    {
+      "title": "IT Project Manager",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Network Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "IT Project Manager",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "IT Project Manager",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "IT Project Manager",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Network Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "IT Project Manager",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "Network Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Network Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "IT Project Manager",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Network Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Database Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Network Administrator",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Network Administrator",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Database Administrator",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Data Analyst",
+      "description": "IT Project Manager",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "Software Engineer",
+      "applicantsCount": 0
+    },
+    {
+      "title": "Software Engineer",
+      "description": "Data Analyst",
+      "applicantsCount": 0
+    }
+  ],
+  "skills": [
+    {
+      "name": "JavaScript",
+      "seniority": "Senior"
+    },
+    {
+      "name": "CSS",
+      "seniority": "Mid"
+    },
+    {
+      "name": "HTML",
+      "seniority": "Expert"
+    },
+    {
+      "name": "PostgreSQL",
+      "seniority": "Mid"
+    }
+  ],
+  "benefits": [
+    {
+      "description": "health insurance"
+    },
+    {
+      "description": "paid time off"
+    },
+    {
+      "description": "employee discounts"
+    },
+    {
+      "description": "professional development opportunities"
+    },
+    {
+      "description": "retirement plan"
+    }
+  ],
+  "bestCompany": {
+    "name": "Best Company",
+    "location": "Iasi"
+  },
+  "worstCompany": {
+    "name": "Worst Company",
+    "location": "Cluj"
+  },
+  "goodFeedback": {
+    "type": "Positive",
+    "content": "Good job"
+  },
+  "badFeedback": {
+    "type": "Negative",
+    "content": "Not so Good job"
+  }
+}
