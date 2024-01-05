@@ -84,10 +84,11 @@ model JobBenefits {
 }
 
 model JobSkills {
-  job_id   String
-  skill_id String
-  job      Jobs   @relation(fields: [job_id], references: [id])
-  skill    Skills @relation(fields: [skill_id], references: [id])
+  job_id    String
+  skill_id  String
+  job       Jobs   @relation(fields: [job_id], references: [id])
+  skill     Skills @relation(fields: [skill_id], references: [id])
+  seniority String
 
   @@id([job_id, skill_id])
 }

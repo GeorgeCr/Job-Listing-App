@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { IJobPositionRepository } from '../repository/types';
 
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 @Injectable()
-export class JobPositionRepository implements IJobPositionRepository {
+export class JobPositionRepository {
   async getAll() {
     return prisma.jobs.findMany();
   }
@@ -19,9 +18,29 @@ export class JobPositionRepository implements IJobPositionRepository {
     });
   }
 
-  async create(createJobDto: any) {
+  async create(createJobDto: {
+    description: string;
+    company: any;
+    benefits: any;
+    skills: any;
+  }) {
     console.log('create job dto', createJobDto);
-    const job = await prisma.jobs.create({ data: createJobDto });
+    const { description, company, benefits, skills } = createJobDto;
+    const job = await prisma.jobs.create({
+      data: {
+        description,
+        applicantsCount: 0,
+        benefits: {
+          create: benefits,
+        },
+        company: {
+          create: company,
+        },
+        skills: {
+          create: skills,
+        },
+      },
+    });
     console.log('job wtf', job);
   }
 
