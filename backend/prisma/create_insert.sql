@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS "Users" (
 );
 
 CREATE TABLE IF NOT EXISTS "UserSkills" (
-  user_id VARCHAR(50),
-  skill_id uuid,
+  "userId" VARCHAR(50),
+  "skillId" uuid,
   seniority VARCHAR(20),
-  PRIMARY KEY (user_id, skill_id)
+  PRIMARY KEY ("userId", "skillId")
 );
 
 CREATE TABLE IF NOT EXISTS "Skills" (

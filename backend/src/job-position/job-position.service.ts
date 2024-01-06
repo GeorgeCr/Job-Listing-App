@@ -31,7 +31,7 @@ export class JobPositionService {
   }
 
   async getJobApplicants(id: string) {
-    return this.jobPositionRepository.getApplicants(id, { useRawQuery: true });
+    return this.jobPositionRepository.getApplicants(id);
   }
 
   async getJobBenefits(id: string) {

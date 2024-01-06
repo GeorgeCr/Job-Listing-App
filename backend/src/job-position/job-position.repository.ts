@@ -19,15 +19,17 @@ export class JobPositionRepository {
   }
 
   async create(createJobDto: {
+    title: string;
     description: string;
     company: any;
     benefits: any;
     skills: any;
   }) {
     console.log('create job dto', createJobDto);
-    const { description, company, benefits, skills } = createJobDto;
+    const { title, description, company, benefits, skills } = createJobDto;
     const job = await prisma.jobs.create({
       data: {
+        title,
         description,
         applicantsCount: 0,
         benefits: {
@@ -63,21 +65,26 @@ export class JobPositionRepository {
       return prisma.$queryRaw`SELECT * FROM "Skills" INNER JOIN "JobSkills" ON "Skills".id = "JobSkills".skill_id INNER JOIN "Jobs" ON "JobSkills".job_id = "Jobs".id WHERE "Jobs".id::text = ${id}`;
     }
 
-    return prisma.skills.findMany({
+    return prisma.jobSkills.findMany({
       where: {
-        jobSkills: {
-          some: {
-            job_id: id,
-          },
-        },
+        jobId: id,
       },
     });
   }
 
-  async getApplicants(id: string, { useRawQuery } = { useRawQuery: true }) {
-    if (useRawQuery) {
-      return prisma.$queryRaw`SELECT * FROM "Jobs" INNER JOIN "UserJobs" ON "Jobs".id = "UserJobs".job_id INNER JOIN "Users" ON "UserJobs".user_id = "Users".id WHERE "Jobs".id::text = ${id}`;
-    }
+  async getApplicants(id: string) {
+    return prisma.users.findMany({
+      where: {
+        role: 'Applicant',
+      },
+      include: {
+        jobs: {
+          where: {
+            id,
+          },
+        },
+      },
+    });
   }
 
   async getBenefits(id: string, { useRawQuery } = { useRawQuery: true }) {

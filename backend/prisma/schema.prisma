@@ -37,18 +37,18 @@ model JobSkills {
   id        String @id @default(uuid())
   name      String
   seniority String
-  Jobs      Jobs   @relation(fields: [jobsId], references: [id])
-  jobsId    String
+  Jobs      Jobs   @relation(fields: [jobId], references: [id])
+  jobId     String
 }
 
 model Feedbacks {
-  id      String @id @default(uuid())
+  id      String  @id @default(uuid())
   type    String
   content String
-  userId  String
-  jobId   String
-  user    Users  @relation(fields: [userId], references: [id])
-  job     Jobs   @relation(fields: [jobId], references: [id])
+  userId  String?
+  jobId   String?
+  user    Users?  @relation(fields: [userId], references: [id])
+  job     Jobs?   @relation(fields: [jobId], references: [id])
 }
 
 model Jobs {

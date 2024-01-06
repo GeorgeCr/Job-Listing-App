@@ -20,6 +20,20 @@ const seed = async () => {
         skills: {
           createMany: { data: [...skills] },
         },
+        jobs: {
+          connectOrCreate: [
+            {
+              create: {
+                title: 'Dream Job SE',
+                description: 'Some dream job',
+                applicantsCount: 0,
+              },
+              where: {
+                id: 'test',
+              },
+            },
+          ],
+        },
         feedbacks: {
           create: [
             {
