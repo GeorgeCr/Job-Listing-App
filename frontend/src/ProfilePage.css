@@ -1,0 +1,78 @@
+.profile-page {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .left-half {
+    width: 50%;
+  }
+  
+  .profile-section {
+    margin-bottom: 20px;
+  }
+  
+  .profile-info {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .change-button {
+    background-color: #3498db; /* Blue color */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .qualifications-section {
+    margin-bottom: 20px;
+  }
+  
+  .qualification-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .add-button {
+    background-color: #4caf50; /* Green color */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .remove-button {
+    background-color: #e74c3c; /* Red color */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .qualification-list {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .qualification-list ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .qualification-list li {
+    margin-bottom: 5px;
+  }
