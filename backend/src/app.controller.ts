@@ -31,6 +31,7 @@ export class AppController {
     session.auth = {
       access_token,
       userId: req.user?.id,
+      role: req.user?.role,
     };
     res.json({
       authenticated: true,

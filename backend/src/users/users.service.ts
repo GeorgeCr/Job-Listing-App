@@ -9,7 +9,7 @@ export class UsersService {
     return this.usersRepository.getByUsername(username);
   }
 
-  async getUserById(id: string) {
+  async getUserData(id: string) {
     return this.usersRepository.get(id);
   }
 
@@ -23,6 +23,10 @@ export class UsersService {
 
   async applyForJob(userId: string, jobId: string) {
     return this.usersRepository.addJob(userId, jobId);
+  }
+
+  async removeJobApplication(userId: string, jobId: string) {
+    return this.usersRepository.removeJob(userId, jobId);
   }
 
   async editSkills(id: string, skills: any) {

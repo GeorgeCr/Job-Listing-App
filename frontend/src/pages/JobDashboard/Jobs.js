@@ -80,12 +80,7 @@ export default function Jobs() {
           setSearchedJobs(data.jobs);
         } else {
           const errMessage = await response.text();
-          console.group(response.status, "stat")
-          const reason =
-            response.status === 401
-              ? "Session expired. Please login."
-              : "Server failure.";
-          setError({ message: "Failed to fetch jobs. ", reason, status: response.status });
+          setError({ message: "Failed to fetch jobs. ", status: response.status });
           throw new Error(`Something went wrong. ${errMessage}`);
         }
       } catch (err) {

@@ -4,16 +4,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
-import PeopleIcon from "@mui/icons-material/People";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton component={Link} to={"/dashboard"}>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -25,13 +25,13 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="My Applications" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to={"/my-profile"}>
       <ListItemIcon>
-        <PeopleIcon />
+        <PersonIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="My Profile" />
     </ListItemButton>
-    <ListItemButton>
+    {/* <ListItemButton>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
@@ -42,22 +42,19 @@ export const mainListItems = (
         <LayersIcon />
       </ListItemIcon>
       <ListItemText primary="Integrations" />
-    </ListItemButton>
+    </ListItemButton> */}
   </React.Fragment>
 );
 
 export const secondaryListItems = (
   <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
+    <ListItemButton component={Link} to={"/job/new"}>
       <ListItemIcon>
-        <AssignmentIcon />
+        <AddCircleIcon />
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="Post a Job" />
     </ListItemButton>
-    <ListItemButton>
+    {/* <ListItemButton>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
@@ -68,6 +65,6 @@ export const secondaryListItems = (
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Year-end sale" />
-    </ListItemButton>
+    </ListItemButton> */}
   </React.Fragment>
 );

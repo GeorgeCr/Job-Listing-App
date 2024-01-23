@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dashboard, { Copyright } from "./pages/JobDashboard/Dashboard";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import SignUp from "./pages/SignUp";
@@ -35,6 +35,9 @@ import {
 } from "./pages/JobDashboard/listItems";
 import styled from "@emotion/styled";
 import MyApplications from "./pages/My Applications";
+import PersonIcon from "@mui/icons-material/Person";
+import MyProfile from "./pages/MyProfile";
+import NewJob from "./pages/NewJob";
 
 const drawerWidth = 240;
 
@@ -93,6 +96,12 @@ function App() {
     setOpen(!open);
   };
 
+  useEffect(() => {
+    setError(false);
+  }, []);
+
+  console.log("error stuff", error);
+
   return (
     // <div>
     <ThemeProvider theme={defaultTheme}>
@@ -124,7 +133,7 @@ function App() {
                 noWrap
                 sx={{ flexGrow: 1 }}
               >
-                Dashboard
+                Job Listing LLC
               </Typography>
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
@@ -181,6 +190,8 @@ function App() {
                         path="/my-applications"
                         element={<MyApplications />}
                       />
+                      <Route path="/my-profile" element={<MyProfile />} />
+                      <Route path="/job/new" element={<NewJob />} />
                     </Routes>
                   </Grid>
                 </Grid>
@@ -192,17 +203,17 @@ function App() {
         {error.message && (
           <div className="global-alert">
             <Alert onClose={() => setError({})} severity="error">
-              <AlertTitle>Error</AlertTitle>
-              {/* fix this */}
-              {/* {error.message || ""}
-              {error.reason || ""}
-              {error.reason?.includes("Session") || error.status === 401 ? (
-                <Button onClick={() => navigateTo("/sign-in")}>
-                  <LoginIcon />
-                </Button>
-              ) : (
-                "Try again by refreshing the page."
-              )} */}
+              <AlertTitle>
+                Error. {error.message}{" "}
+                {error.status === 401 && (
+                  <>
+                    {"Session expired. Please login."}
+                    <Button onClick={() => navigateTo("/sign-in")}>
+                      <LoginIcon />
+                    </Button>
+                  </>
+                )}
+              </AlertTitle>
             </Alert>
           </div>
         )}

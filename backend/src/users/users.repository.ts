@@ -19,6 +19,9 @@ export class UsersRepository {
       where: {
         id,
       },
+      include: {
+        skills: true,
+      },
     });
   }
 
@@ -93,6 +96,49 @@ export class UsersRepository {
         jobs: true,
       },
     });
+  }
+
+  async removeJob(userId: string, jobId: string) {
+    const currentJob = await prisma.jobs.findUnique({
+      where: {
+        id: jobId,
+      },
+      select: { applicantsCount: true, id: true },
+    });
+
+    if (!currentJob) {
+      // Handle the case where the job is not found
+      throw new Error(`Job with ID ${jobId} not found.`);
+    }
+
+    // Update the user to disconnect the job
+    const updatedUser = await prisma.users.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        jobs: {
+          disconnect: {
+            id: jobId,
+          },
+        },
+      },
+      include: {
+        jobs: true,
+      },
+    });
+
+    // Update the job to decrement the applicants count
+    const updatedJob = await prisma.jobs.update({
+      where: {
+        id: jobId,
+      },
+      data: {
+        applicantsCount: currentJob.applicantsCount - 1,
+      },
+    });
+
+    return { updatedUser, updatedJob };
   }
 
   async editSkills(id: string, skills: any) {

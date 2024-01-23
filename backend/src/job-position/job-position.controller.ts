@@ -7,6 +7,7 @@ import {
   Delete,
   Patch,
   Req,
+  ForbiddenException,
 } from '@nestjs/common';
 import { JobPositionService } from './job-position.service';
 import { SkipAuth } from 'src/decorators';
@@ -24,11 +25,17 @@ export class JobPositionController {
   @SkipAuth()
   @Get(':id')
   async getJobById(@Param('id') id: string, @Req() req) {
-    return this.jobPositionService.getJobById(id, req.session?.auth?.userId);
+    return this.jobPositionService.getJobById(
+      id,
+      req.session?.auth?.userId || '',
+    );
   }
 
   @Post()
-  async createJob(@Body() createJobDto: any): Promise<void> {
+  async createJob(@Body() createJobDto: any, @Req() req): Promise<void> {
+    if (req.session?.auth?.role === 'Recruiter') {
+      throw new ForbiddenException();
+    }
     this.jobPositionService.createJob(createJobDto);
   }
 

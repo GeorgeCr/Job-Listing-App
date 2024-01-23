@@ -86,7 +86,7 @@ export class JobPositionRepository {
     // maybe return this and drop skills call from FE
     // console.log('current user job skills', currentUser.jobs[0].skills);
     // console.log('user skills', currentUser.skills);
-    const jobSkillsMismatches = currentUser.jobs[0].skills.filter(
+    const jobSkillsMismatches = currentUser.jobs[0]?.skills.filter(
       (jobSkill) => {
         console.log('user skills', userAllSkills);
         const foundUserSkill = userAllSkills.find(
@@ -95,8 +95,8 @@ export class JobPositionRepository {
         console.log('found user skill', foundUserSkill);
 
         if (
-          seniorities[jobSkill.seniority] >
-          seniorities[foundUserSkill.seniority]
+          seniorities[jobSkill?.seniority] >
+          seniorities[foundUserSkill?.seniority]
         ) {
           console.log('found user skill in if', foundUserSkill);
           return foundUserSkill;
@@ -133,6 +133,7 @@ export class JobPositionRepository {
     skills: any;
     salary: number;
     collaborationType: string;
+    location: string;
   }) {
     const {
       title,
@@ -142,7 +143,9 @@ export class JobPositionRepository {
       skills,
       salary,
       collaborationType,
+      location,
     } = createJobDto;
+    console.log('create job dto', createJobDto);
     const job = await prisma.jobs.create({
       data: {
         title,
@@ -154,7 +157,10 @@ export class JobPositionRepository {
           create: benefits,
         },
         company: {
-          create: company,
+          create: {
+            name: company,
+            location,
+          },
         },
         skills: {
           create: skills,
