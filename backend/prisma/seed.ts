@@ -17,6 +17,7 @@ const seed = async () => {
     await client.users.create({
       data: {
         ...user,
+        collaborationType: Math.random() < 0.5 ? 'CIM' : 'B2B',
         skills: {
           createMany: { data: [...skills] },
         },
@@ -27,6 +28,8 @@ const seed = async () => {
                 title: 'Dream Job SE',
                 description: 'Some dream job',
                 applicantsCount: 0,
+                salary: Math.floor(Math.random() * (2501 - 300) + 300) * 10,
+                collaborationType: Math.random() < 0.5 ? 'CIM' : 'B2B',
               },
               where: {
                 id: 'test',
@@ -45,6 +48,8 @@ const seed = async () => {
                   title: 'Software Engineer',
                   description: 'Database Administrator',
                   applicantsCount: 0,
+                  salary: Math.floor(Math.random() * (2501 - 300) + 300) * 10,
+                  collaborationType: Math.random() < 0.5 ? 'CIM' : 'B2B',
                 },
               },
             },
@@ -58,6 +63,8 @@ const seed = async () => {
     await client.jobs.create({
       data: {
         ...job,
+        salary: Math.floor(Math.random() * (2501 - 300) + 300) * 10,
+        collaborationType: Math.random() < 0.5 ? 'CIM' : 'B2B',
         skills: {
           createMany: { data: [...skills] },
         },

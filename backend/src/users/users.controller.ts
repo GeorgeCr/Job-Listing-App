@@ -1,37 +1,31 @@
-import { Body, Controller, Get, Param, Put, Post } from '@nestjs/common';
-import { UserService } from './user.service';
+import { Body, Controller, Get, Param, Put, Post, Req } from '@nestjs/common';
+import { UsersService } from './users.service';
+import { SkipAuth } from 'src/decorators';
 
 @Controller('user')
-export class UserController {
-  constructor(private userService: UserService) {}
-
-  @Get(':id') // replace :id with user session
-  async getUserById(@Param('id') id: string) {
-    return this.userService.getUserById(id);
-  }
+export class UsersController {
+  constructor(private usersService: UsersService) {}
 
   @Get(':id/skills') // replace :id with user session
   async getUserSkills(@Param('id') id: string) {
-    return this.userService.getUserSkills(id);
+    return this.usersService.getUserSkills(id);
   }
 
-  @Get(':id/jobs') // replace :id with user session
-  async getUserAppliedJobs(@Param('id') id: string) {
-    return this.userService.getUserJobs(id);
+  @Get('/jobs') // replace :id with user session
+  async getUserAppliedJobs(@Req() req) {
+    return this.usersService.getUserJobs(req.session?.auth?.userId);
   }
 
   // add guard for user to be applicant role
-  @Post(':userId/jobs/:jobId/apply') // replace :userId with user session
-  async applyForJob(
-    @Param('userId') userId: string,
-    @Param('jobId') jobId: string,
-  ) {
-    return this.userService.applyForJob(userId, jobId);
+  @SkipAuth()
+  @Post('/jobs/:jobId/apply') // replace :userId with user session
+  async applyForJob(@Req() req, @Param('jobId') jobId: string) {
+    return this.usersService.applyForJob(req.session?.auth?.userId, jobId);
   }
 
   @Put(':id/skills')
   async editUserSkills(@Param('id') id: string, @Body('skills') skills: any) {
-    return this.userService.editSkills(id, skills);
+    return this.usersService.editSkills(id, skills);
   }
 
   // add guard for user to be recruiter role
@@ -42,7 +36,7 @@ export class UserController {
     @Param('candidateId') candidateId: string,
     @Body('feedbackContent') feedbackContent: string,
   ) {
-    return this.userService.acceptCandidate(
+    return this.usersService.acceptCandidate(
       id,
       jobId,
       candidateId,
@@ -58,7 +52,7 @@ export class UserController {
     @Param('candidateId') candidateId: string,
     @Body('feedbackContent') feedbackContent: string,
   ) {
-    return this.userService.rejectCandidate(
+    return this.usersService.rejectCandidate(
       id,
       jobId,
       candidateId,

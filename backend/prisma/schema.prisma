@@ -13,16 +13,18 @@ datasource db {
 // Prisma schema
 
 model Users {
-  id            String       @id @default(uuid())
-  role          String
-  username      String
-  firstName     String
-  lastName      String
-  hobbies       String
-  lastEducation String
-  skills        UserSkills[]
-  feedbacks     Feedbacks[]
-  jobs          Jobs[]
+  id                String       @id @default(uuid())
+  role              String
+  username          String
+  password          String
+  firstName         String
+  lastName          String
+  hobbies           String
+  lastEducation     String
+  collaborationType String
+  skills            UserSkills[]
+  feedbacks         Feedbacks[]
+  jobs              Jobs[]
 }
 
 model UserSkills {
@@ -37,7 +39,7 @@ model JobSkills {
   id        String @id @default(uuid())
   name      String
   seniority String
-  Jobs      Jobs   @relation(fields: [jobId], references: [id])
+  job       Jobs   @relation(fields: [jobId], references: [id])
   jobId     String
 }
 
@@ -52,15 +54,17 @@ model Feedbacks {
 }
 
 model Jobs {
-  id              String      @id @default(uuid())
-  title           String
-  description     String
-  applicantsCount Int
-  feedbacks       Feedbacks[]
-  users           Users[]
-  benefits        Benefits[]
-  skills          JobSkills[]
-  company         Companies?
+  id                String      @id @default(uuid())
+  title             String
+  description       String
+  applicantsCount   Int
+  salary            Int
+  collaborationType String
+  feedbacks         Feedbacks[]
+  users             Users[]
+  benefits          Benefits[]
+  skills            JobSkills[]
+  company           Companies?
 }
 
 model Benefits {

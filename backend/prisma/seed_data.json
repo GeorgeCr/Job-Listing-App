@@ -3,6 +3,7 @@
     {
       "role": "Recruiter",
       "username": "igass0",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Irina",
       "lastName": "Gass",
       "hobbies": "cooking",
@@ -11,6 +12,7 @@
     {
       "role": "Applicant",
       "username": "wstory1",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Winfield",
       "lastName": "Story",
       "hobbies": "painting",
@@ -19,6 +21,7 @@
     {
       "role": "Recruiter",
       "username": "cboughtwood2",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Ches",
       "lastName": "Boughtwood",
       "hobbies": "reading",
@@ -27,6 +30,7 @@
     {
       "role": "Recruiter",
       "username": "ydugall3",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Ynez",
       "lastName": "Dugall",
       "hobbies": "cooking",
@@ -35,6 +39,7 @@
     {
       "role": "Recruiter",
       "username": "kthompsett4",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Kele",
       "lastName": "Thompsett",
       "hobbies": "painting",
@@ -43,6 +48,7 @@
     {
       "role": "Recruiter",
       "username": "lfarn5",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Lezley",
       "lastName": "Farn",
       "hobbies": "gardening",
@@ -51,6 +57,7 @@
     {
       "role": "Applicant",
       "username": "rgibling6",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Rriocard",
       "lastName": "Gibling",
       "hobbies": "cooking",
@@ -59,6 +66,7 @@
     {
       "role": "Applicant",
       "username": "aepsly7",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Ashlin",
       "lastName": "Epsly",
       "hobbies": "painting",
@@ -67,6 +75,7 @@
     {
       "role": "Recruiter",
       "username": "hfoister8",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Hagan",
       "lastName": "Foister",
       "hobbies": "photography",
@@ -75,6 +84,7 @@
     {
       "role": "Recruiter",
       "username": "galmon9",
+      "password": "5a8b029f44e8d5914d8c3f7a",
       "firstName": "Gilberte",
       "lastName": "Almon",
       "hobbies": "photography",

@@ -5,7 +5,15 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 @Injectable()
-export class UserRepository {
+export class UsersRepository {
+  async getByUsername(username: string) {
+    return prisma.users.findFirst({
+      where: {
+        username,
+      },
+    });
+  }
+
   async get(id: string) {
     return prisma.users.findFirst({
       where: {
@@ -35,6 +43,7 @@ export class UserRepository {
             description: true,
             feedbacks: true,
             applicantsCount: true,
+            company: true,
           },
         },
       },
@@ -42,6 +51,25 @@ export class UserRepository {
   }
 
   async addJob(userId: string, jobId: string) {
+    // console.log('userid', userId, 'jobId', jobId);
+    console.log('userid', userId, 'jobId', jobId);
+    const currentJob = await prisma.jobs.findUnique({
+      where: {
+        id: jobId,
+      },
+      select: { applicantsCount: true, users: true, id: true },
+    });
+    console.log('current job', currentJob);
+    const hasUserAlreadyApplied = currentJob.users.some(
+      (user) => user.id === userId,
+    );
+
+    if (hasUserAlreadyApplied) {
+      return {}; // fe should handle better
+    }
+
+    console.log('has already', currentJob.applicantsCount);
+
     return prisma.users.update({
       where: {
         id: userId,
@@ -50,6 +78,14 @@ export class UserRepository {
         jobs: {
           connect: {
             id: jobId,
+          },
+          update: {
+            where: {
+              id: jobId,
+            },
+            data: {
+              applicantsCount: currentJob.applicantsCount + 1,
+            },
           },
         },
       },

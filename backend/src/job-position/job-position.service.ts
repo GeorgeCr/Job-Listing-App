@@ -7,11 +7,11 @@ export class JobPositionService {
     console.log(this.constructor.prototype, 'this');
   }
   async getAllJobs() {
-    return this.jobPositionRepository.getAll();
+    return { jobs: await this.jobPositionRepository.getAll() };
   }
 
-  async getJobById(id: string) {
-    return this.jobPositionRepository.get(id);
+  async getJobById(id: string, userId: string) {
+    return this.jobPositionRepository.get(id, userId);
   }
 
   async createJob(createJobDto: any) {
@@ -27,7 +27,7 @@ export class JobPositionService {
   }
 
   async getJobSkills(id: string) {
-    return this.jobPositionRepository.getSkills(id, { useRawQuery: true });
+    return this.jobPositionRepository.getSkills(id, { useRawQuery: false });
   }
 
   async getJobApplicants(id: string) {

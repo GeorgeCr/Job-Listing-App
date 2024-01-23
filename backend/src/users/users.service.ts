@@ -1,28 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from './user.repository';
+import { UsersRepository } from './users.repository';
 
 @Injectable()
-export class UserService {
-  constructor(private userRepository: UserRepository) {}
+export class UsersService {
+  constructor(private usersRepository: UsersRepository) {}
+
+  async getUserByUsername(username: string) {
+    return this.usersRepository.getByUsername(username);
+  }
 
   async getUserById(id: string) {
-    return this.userRepository.get(id);
+    return this.usersRepository.get(id);
   }
 
   async getUserSkills(id: string) {
-    return this.userRepository.getSkills(id);
+    return this.usersRepository.getSkills(id);
   }
 
   async getUserJobs(id: string) {
-    return this.userRepository.getJobs(id);
+    return this.usersRepository.getJobs(id);
   }
 
   async applyForJob(userId: string, jobId: string) {
-    return this.userRepository.addJob(userId, jobId);
+    return this.usersRepository.addJob(userId, jobId);
   }
 
   async editSkills(id: string, skills: any) {
-    return this.userRepository.editSkills(id, skills);
+    return this.usersRepository.editSkills(id, skills);
   }
 
   async acceptCandidate(
@@ -31,7 +35,7 @@ export class UserService {
     candidateId: string,
     feedbackContent: string,
   ) {
-    return this.userRepository.acceptCandidate(
+    return this.usersRepository.acceptCandidate(
       id,
       jobId,
       candidateId,
@@ -45,7 +49,7 @@ export class UserService {
     candidateId: string,
     feedbackContent: string,
   ) {
-    return this.userRepository.rejectCandidate(
+    return this.usersRepository.rejectCandidate(
       id,
       jobId,
       candidateId,
